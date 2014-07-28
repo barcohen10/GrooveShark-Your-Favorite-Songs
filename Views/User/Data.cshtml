@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = " Favorite Songs "+ ViewBag.UserName ;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="@Url.Content("~/Content/kendo/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("/Scripts/kendo/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/kendo/kendo.all.min.js")"></script>
+    
+</head>
+<body background="images/wallpaper.jpg">
+
+    <div id="wrapper" style="width:100%; text-align:center">
+        <img src="images/logo_data.png" />
+    </div>
+    
+    <div id="example">
+        <div id="grid"></div>
+
+        <script>
+
+            $(document).ready(function () {
+
+                var ds = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "@ViewBag.FavoriteSongsUrl", dataType: "json"
+                        }
+                    }
+         
+                });
+
+                $("#grid").kendoGrid({
+                    dataSource: ds,
+                    sortable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true
+                    },
+                    filterable: true,
+                    columns: [
+                         {
+                             field: "SongID",
+                             title: "Song Id",
+                             width: 110
+                         },
+                         {
+                             field: "SongName",
+                             title: "Song Name",
+                             width: 120
+                         },
+                         {
+                             field: "ArtistID",
+                             title: "Artist Id",
+                             width: 110
+                         },
+                         {
+                             field: "ArtistName",
+                             title: "Artist Name",
+                             width: 130
+                         },
+                         {
+                             field: "AlbumID",
+                             title: "Album Id",
+                             width: 100
+                         },
+                         {
+                             field: "AlbumName",
+                             title: "Album Name",
+                             width: 135
+                         },
+                         {
+                             field: "CoverArtFilename",
+                             title: "Cover Art File Name",
+                             width: 180
+                         },
+                         {
+                             field: "Popularity",
+                             title: "Popularity",
+                             width: 110
+                         },
+                         {
+                             field: "IsLowBitrateAvailable",
+                             title: "Is Low Bitrate Available?",
+                             width: 185
+                         },
+                         {
+                             field: "IsVerified",
+                             title: "Is Verified?",
+                             width: 120
+                         },
+                         {
+                             field: "Flags",
+                             title: "Flags",
+                             width: 90
+                         },
+                          {
+                              field: "TSFavorited",
+                              title: "TSFavorited",
+                              width: 130
+                          },
+
+
+                    ]
+                });
+
+            });
+
+            
+           
+        </script>
+
+        
+    </div>
+
+
+</body>
+</html>
+

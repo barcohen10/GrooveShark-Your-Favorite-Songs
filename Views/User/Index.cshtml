@@ -1,0 +1,68 @@
+﻿@model FavoriteSongs.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    if ( ViewBag.Login =="Failed")
+    {
+        <script language="javascript">
+        alert("Login Failed!");
+    </script>
+    }
+    if ( ViewBag.Login =="Empty")
+    {
+        <script language="javascript">
+        alert("Check UserName And Password Again!");
+    </script>
+    }
+}
+
+@using (@Html.BeginForm())
+{
+    <head>
+
+    <meta charset="UTF-8">
+
+    <title>GrooveShark Your Favorite Songs</title>
+
+    <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+
+</head>
+    <body background="images/wallpaper.jpg">
+
+    <div class="login-card">
+
+        <h1>Log-in</h1>
+        <img border="0" src="images/logo.jpg" width="274" height="100">
+        <br>
+        <br>
+        <form>
+
+            @Html.TextBoxFor(m => m.UserName, new {  @id = "txtuserid", placeholder = "GrooveShark Username" })
+
+            @Html.PasswordFor(m => m.Password, new { @id = "txtpasword", placeholder = "Password" })
+            
+            <input type="submit" name="login" class="login login-submit" value="login" >  
+            
+        </form>
+  
+        <div class="login-help">
+
+            <a href="http://grooveshark.com/">Create GrooveShark Account</a>
+        </div>
+
+    </div>
+    <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'>
+    </script>
+      
+</body>
+ 
+    
+}
