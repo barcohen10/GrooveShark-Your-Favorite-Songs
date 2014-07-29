@@ -11,9 +11,9 @@ namespace FavoriteSongs.Models
     {
         private const string ServiceUrl = "https://api.grooveshark.com";
 
-        private const string WsKey = "edu_barcohen";
-        private const string Secret = "d283c71532b465a12826a5bc1a9ff4f3";
-
+        private const string WsKey ;
+        private const string Secret ;
+        
         public static Dictionary<string, object> Authenticate(string sessionId, User user)
         {
             var headers = new Dictionary<string, string>();
